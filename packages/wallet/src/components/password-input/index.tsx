@@ -1,4 +1,3 @@
-// generate password field component based on the input components in onboardin/news.tsx
 'use client'
 
 import { useState } from 'react'
@@ -26,32 +25,30 @@ const PasswordInput = (props: Props) => {
   const invalid = fieldState.invalid
 
   return (
-    <>
-      <div className="relative">
-        <input
-          {...field}
-          {...inputProps}
-          type={showPassword ? 'text' : 'password'}
-          placeholder={placeholder}
-          data-invalid={invalid}
-          aria-label={label}
-          autoComplete="off"
-          maxLength={MAX_PASSWORD_LENGTH}
-          className={cx(
-            'h-10 w-full rounded-12 border border-solid bg-white-100 px-4 text-15 font-medium placeholder:font-regular max-sm:text-[1rem]',
-            'border-neutral-30 data-[invalid=true]:border-danger-50 focus:border-neutral-40',
-            'disabled:cursor-not-allowed disabled:border-0 disabled:bg-neutral-5 disabled:text-neutral-50',
-          )}
-        />
-        <button
-          type="button"
-          onClick={() => setShowPassword(!showPassword)}
-          className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-50 hover:text-neutral-70"
-        >
-          {showPassword ? <HideIcon /> : <RevealIcon />}
-        </button>
-      </div>
-    </>
+    <div className="relative">
+      <input
+        {...field}
+        {...inputProps}
+        type={showPassword ? 'text' : 'password'}
+        placeholder={placeholder}
+        data-invalid={invalid}
+        aria-label={label}
+        autoComplete="off"
+        maxLength={MAX_PASSWORD_LENGTH}
+        className={cx(
+          'h-10 w-full rounded-12 border border-solid bg-white-100 px-4 text-15 font-medium placeholder:font-regular max-sm:text-[1rem]',
+          'border-neutral-30 data-[invalid=true]:border-danger-50 focus:border-neutral-40',
+          'disabled:cursor-not-allowed disabled:border-0 disabled:bg-neutral-5 disabled:text-neutral-50',
+        )}
+      />
+      <button
+        type="button"
+        onClick={() => setShowPassword(!showPassword)}
+        className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-50 hover:text-neutral-70"
+      >
+        {showPassword ? <HideIcon /> : <RevealIcon />}
+      </button>
+    </div>
   )
 }
 

@@ -48,8 +48,7 @@ function CreatePassword() {
     try {
       startTransition(async () => {
         const mnemonic = await createWalletAsync(data.password)
-        console.log('MNEMONIC: ', mnemonic)
-        navigate({ to: '/portfolio' })
+        navigate({ to: '/portfolio', state: { mnemonic } })
       })
     } catch (error) {
       console.error(error)
