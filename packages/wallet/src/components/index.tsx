@@ -14,7 +14,9 @@ export { Logo, type LogoProps } from './logo'
 export { Navbar } from './nav-bar'
 export { NetworkExplorerLogo } from './network-explorer-logo'
 export { NetworkLogo } from './network-logo'
+export { PasswordInput } from './password-input'
 export { PercentageChange } from './percentage-change'
+export { RecoveryPhrase } from './recovery-phrase'
 export { SettingsPopover } from './settings-popover'
 export {
   ShortenAddress,

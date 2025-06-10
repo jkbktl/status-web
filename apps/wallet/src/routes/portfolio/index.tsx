@@ -1,8 +1,8 @@
 // import { Suspense } from 'react'
 
-import { AssetsList } from '@status-im/wallet/components'
+import { AssetsList, RecoveryPhrase } from '@status-im/wallet/components'
 import { useQuery } from '@tanstack/react-query'
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, useLocation } from '@tanstack/react-router'
 
 // import { DetailDrawer } from '../../../../portfolio/src/app/[address]/@detail/_drawer'
 // import { Loading as LoadingNav } from '../../../../portfolio/src/app/[address]/@nav/loading'
@@ -19,6 +19,7 @@ export const Route = createFileRoute('/portfolio/')({
 })
 
 function RouteComponent() {
+  const location = useLocation()
   const handleSelect = (url: string, options?: { scroll?: boolean }) => {
     // Handle the selection of an asset
     console.log('Selected asset URL:', url)
@@ -83,16 +84,24 @@ function RouteComponent() {
             {isLoading ? (
               <div>Loading...</div>
             ) : (
-              <AssetsList
-                assets={assets}
-                onSelect={handleSelect}
-                clearSearch={() => {
-                  // Clear the search input
-                  console.log('Search cleared')
-                }}
-                searchParams={new URLSearchParams()}
-                pathname="/portfolio/"
-              />
+              <div>
+                {location.state.mnemonic && (
+                  <div className="my-4 flex">
+                    <RecoveryPhrase mnemonic={location.state.mnemonic} />
+                  </div>
+                )}
+
+                <AssetsList
+                  assets={assets}
+                  onSelect={handleSelect}
+                  clearSearch={() => {
+                    // Clear the search input
+                    console.log('Search cleared')
+                  }}
+                  searchParams={new URLSearchParams()}
+                  pathname="/portfolio/"
+                />
+              </div>
             )}
           </div>
 
